@@ -14,7 +14,7 @@
         <div class="container" style="padding: 50px;">
             <div class="row bg-white shadow rounded" style="margin-bottom: 20px;">
                 <div class="col-12 text-center" >
-                    <img class="rounded-circle shadow-lg" src="images/profile.jpg" width="140" style="margin: 40px 0 20px 0;">
+                    <img class="rounded-circle shadow-lg" src="images/profile.jpg" width="200" style="margin: 40px 0 20px 0;">
                     <h1 class="text-dark">
                         <strong>Farzana Afrin Taniza</strong><br>
                         <small>Content Writer</small>
@@ -22,41 +22,35 @@
                     <p><span><i class="fa fa-envelope"></i> taniza19@gmail.com</span></p>
                 </div>
             </div>  
-            <div class="row">
-                <div class="card-deck">
+            <div class="row" data-bind="foreach: CardDecks">
+                <div class="card-deck" data-bind="foreach: cards" style="margin-bottom: 20px;">
                     <div class="card shadow-lg bg-white rounded">
-                        <img src="images/thumbnail.svg" class="card-img-top" alt="...">
+                        <img data-bind="attr: {src: image && image() ? 'images/' + image() : ''}" class="card-img-top" onerror="this.src=getDefaultCardImg()">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card shadow-lg bg-white rounded">
-                        <img src="images/thumbnail.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card shadow-lg bg-white rounded">
-                        <img src="images/thumbnail.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title" data-bind="text: title"></h5>
+                            <p class="card-text" data-bind="text: description"></p>
+                            <p class="card-text text-danger"><small class="" data-bind="text: hashtags"></small></p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                         </div>
                     </div>
                 </div>
             </div>    
         </div>
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     </body>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/cardDeck.js"></script>
+    <script src="contents/allContents.js"></script>
+    <script src="js/homeViewModel.js"></script>
+    <script>
+        var homeVM = new HomeViewModel();
+        ko.applyBindings(homeVM);
+    </script>
 </html>
